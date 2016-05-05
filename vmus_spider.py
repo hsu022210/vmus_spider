@@ -72,6 +72,7 @@ show_url = {
     'billions': 'http://vmus.co/billions/',
     'rush-hour': 'http://vmus.co/rush-hour/',
     'dr-ken': 'http://vmus.co/dr-ken/',
+    'silicon-valley': 'http://vmus.co/矽谷群瞎傳硅谷矽谷黑歷史-silicon-valley/',
 }
 
 if __name__ == '__main__':
