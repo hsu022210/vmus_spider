@@ -23,10 +23,11 @@ def shows_latest_episode(url):
     episode_name = latest_episode_soup.find('h2', {'class': 'post-title'}).text
     episode_name = episode_name.split('線上看')[0]
     post_time_text = latest_episode_soup.find('time', {'class': 'entry-date'}).text
+    episode_image = latest_episode_soup.find('img', {'class': 'attachment-featured_image'})['src']
     print('--------------------------------------------------------')
     print(post_time_text)
     print(episode_name)
-    return(post_time_text, latest_episode_url, episode_name)
+    return(post_time_text, latest_episode_url, episode_name, episode_image)
 
 
 def update_show_html():
@@ -46,8 +47,8 @@ def update_show_html():
         ' crossorigin="anonymous"></head><body><div class="list-group">'
 
     for show in show_url.values():
-        (post_time_text, latest_episode_url, episode_name) = shows_latest_episode(show)
-        show_list = '<a href="{}" class="list-group-item list-group-item-info"> {} | {} </a>'.format(latest_episode_url, post_time_text, episode_name)
+        (post_time_text, latest_episode_url, episode_name, episode_image) = shows_latest_episode(show)
+        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name)
         html_template += show_list
 
     html_template += '<!-- jQuery first, then Bootstrap JS. -->' + \
