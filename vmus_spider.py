@@ -46,9 +46,9 @@ def update_show_html():
         '+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"' + \
         ' crossorigin="anonymous"></head><body><div class="list-group">'
 
-    for show in show_url.values():
-        (post_time_text, latest_episode_url, episode_name, episode_image) = shows_latest_episode(show)
-        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name)
+    for show in show_url:
+        (post_time_text, latest_episode_url, episode_name, episode_image) = shows_latest_episode(show_url[show])
+        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} | <a href="{}">{}</a> </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name, show_url[show], show)
         html_template += show_list
 
     html_template += '<!-- jQuery first, then Bootstrap JS. -->' + \
