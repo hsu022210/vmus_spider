@@ -17,8 +17,8 @@ def BsRequest(url):
 
 def shows_latest_episode(url):
     episodes_soup = BsRequest(url)
-    latest_episode_url = episodes_soup.find(
-        'span', {'class': 'category_nav_prev'}).a['href']
+    latest_episode_url = episodes_soup.find('span', {'class': 'category_nav_prev'}).a['href']
+    episodes_url = episodes_soup.find('meta', {'property': 'og:url'})['content']
     latest_episode_soup = BsRequest(latest_episode_url)
     episode_name = latest_episode_soup.find('h2', {'class': 'post-title'}).text
     episode_name = episode_name.split('線上看')[0]
@@ -27,7 +27,7 @@ def shows_latest_episode(url):
     print('--------------------------------------------------------')
     print(post_time_text)
     print(episode_name)
-    return(post_time_text, latest_episode_url, episode_name, episode_image)
+    return(post_time_text, latest_episode_url, episode_name, episode_image, episodes_url)
 
 
 def update_show_html():
@@ -47,8 +47,8 @@ def update_show_html():
         ' crossorigin="anonymous"></head><body><div class="list-group">'
 
     for show in show_url:
-        (post_time_text, latest_episode_url, episode_name, episode_image) = shows_latest_episode(show_url[show])
-        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} | <a href="{}">{}</a> </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name, show_url[show], show)
+        (post_time_text, latest_episode_url, episode_name, episode_image, episodes_url) = shows_latest_episode(show_url[show])
+        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} | <a href="{}">{}</a> </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name, episodes_url, show)
         html_template += show_list
 
     html_template += '<!-- jQuery first, then Bootstrap JS. -->' + \
