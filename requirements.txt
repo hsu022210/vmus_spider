@@ -1,0 +1,8 @@
+# Screen-scraping library
+# https://pypi.python.org/pypi/beautifulsoup4/4.4.1
+beautifulsoup4==4.4.1
+
+
+# Python HTTP for Humans.
+# https://pypi.python.org/pypi/requests/2.7.0
+requests==2.9.1
