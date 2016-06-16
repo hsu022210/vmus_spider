@@ -4,5 +4,5 @@ beautifulsoup4==4.4.1
 
 
 # Python HTTP for Humans.
-# https://pypi.python.org/pypi/requests/2.7.0
+# https://pypi.python.org/pypi/requests/2.9.1
 requests==2.9.1
