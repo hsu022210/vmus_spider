@@ -1,7 +1,49 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import json
 
+# data = [
+#     {
+#     "name": "scorpion",
+#     "url": "http://vmus.co/天蠍蠍子網絡-scorpion/",
+#     }, {
+#     "name": "brooklyn-nine-nine",
+#     "url": "http://vmus.co/神煩警察神煩警探-brooklyn-nine-nine/",
+#     }, {
+#     "name": "suits",
+#     "url": "http://vmus.co/金裝律師訴訟雙雄-suits/",
+#     }, {
+#     "name": "new-girl",
+#     "url": "http://vmus.co/俏妞報到杰茜駕到-new-girl/",
+#     }, {
+#     "name": "quantico",
+#     "url": "http://vmus.co/quantico/",
+#     }, {
+#     "name": "bigbang",
+#     "url": "http://vmus.co/宅男行不行生活大爆炸-the-big-bang-theory/",
+#     }, {
+#     "name": "fresh-off-the-boat",
+#     "url": "http://vmus.co/fresh-off-the-boat/",
+#     }, {
+#     "name": "billions",
+#     "url": "http://vmus.co/billions/",
+#     }, {
+#     "name": "rush-hour",
+#     "url": "http://vmus.co/rush-hour/",
+#     }, {
+#     "name": "dr-ken",
+#     "url": "http://vmus.co/dr-ken/",
+#     }, {
+#     "name": "silicon-valley",
+#     "url": "http://vmus.co/矽谷群瞎傳硅谷矽谷黑歷史-silicon-valley/",
+#     },
+# ]
+
+def get_data():
+    with open("shows.json") as f:
+         data = json.load(f)
+         return data
 
 def get_desktop_path():
     desktop = os.path.join(os.environ["HOMEDRIVE"], os.environ["HOMEPATH"], "Desktop")
@@ -46,9 +88,11 @@ def update_show_html():
         '+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"' + \
         ' crossorigin="anonymous"></head><body><div class="list-group">'
 
-    for show in show_url:
-        (post_time_text, latest_episode_url, episode_name, episode_image, episodes_url) = shows_latest_episode(show_url[show])
-        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} | <a href="{}">{}</a> </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name, episodes_url, show)
+    data = get_data()
+
+    for show in data:
+        (post_time_text, latest_episode_url, episode_name, episode_image, episodes_url) = shows_latest_episode(show['url'])
+        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} | <a href="{}">{}</a> </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name, episodes_url, show['name'])
         html_template += show_list
 
     html_template += '<!-- jQuery first, then Bootstrap JS. -->' + \
@@ -62,19 +106,6 @@ def update_show_html():
     text_file.write(html_template)
     text_file.close()
 
-show_url = {
-    'scorpion': 'http://vmus.co/天蠍蠍子網絡-scorpion/',
-    'suits': 'http://vmus.co/金裝律師訴訟雙雄-suits/',
-    'brooklyn-nine-nine': 'http://vmus.co/神煩警察神煩警探-brooklyn-nine-nine/',
-    'new-girl': 'http://vmus.co/俏妞報到杰茜駕到-new-girl/',
-    'quantico': 'http://vmus.co/quantico/',
-    'bigbang': 'http://vmus.co/宅男行不行生活大爆炸-the-big-bang-theory/',
-    'fresh-off-the-boat': 'http://vmus.co/fresh-off-the-boat/',
-    'billions': 'http://vmus.co/billions/',
-    'rush-hour': 'http://vmus.co/rush-hour/',
-    'dr-ken': 'http://vmus.co/dr-ken/',
-    'silicon-valley': 'http://vmus.co/矽谷群瞎傳硅谷矽谷黑歷史-silicon-valley/',
-}
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     update_show_html()
