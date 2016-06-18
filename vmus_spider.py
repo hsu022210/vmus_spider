@@ -42,7 +42,7 @@ data = [
 
 def dump_data():
     with open('shows.json', 'w') as f:
-        json.dump(data, f)
+        json.dump(data, f, indent=4, separators=(',', ': '))
 
 def get_data():
     with open('shows.json', 'r') as f:
