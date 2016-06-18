@@ -3,47 +3,55 @@ from bs4 import BeautifulSoup
 import os
 import json
 
-# data = [
-#     {
-#     "name": "scorpion",
-#     "url": "http://vmus.co/天蠍蠍子網絡-scorpion/",
-#     }, {
-#     "name": "brooklyn-nine-nine",
-#     "url": "http://vmus.co/神煩警察神煩警探-brooklyn-nine-nine/",
-#     }, {
-#     "name": "suits",
-#     "url": "http://vmus.co/金裝律師訴訟雙雄-suits/",
-#     }, {
-#     "name": "new-girl",
-#     "url": "http://vmus.co/俏妞報到杰茜駕到-new-girl/",
-#     }, {
-#     "name": "quantico",
-#     "url": "http://vmus.co/quantico/",
-#     }, {
-#     "name": "bigbang",
-#     "url": "http://vmus.co/宅男行不行生活大爆炸-the-big-bang-theory/",
-#     }, {
-#     "name": "fresh-off-the-boat",
-#     "url": "http://vmus.co/fresh-off-the-boat/",
-#     }, {
-#     "name": "billions",
-#     "url": "http://vmus.co/billions/",
-#     }, {
-#     "name": "rush-hour",
-#     "url": "http://vmus.co/rush-hour/",
-#     }, {
-#     "name": "dr-ken",
-#     "url": "http://vmus.co/dr-ken/",
-#     }, {
-#     "name": "silicon-valley",
-#     "url": "http://vmus.co/矽谷群瞎傳硅谷矽谷黑歷史-silicon-valley/",
-#     },
-# ]
+data = [
+    {
+        "name": "scorpion",
+        "url": "http://vmus.co/天蠍蠍子網絡-scorpion/",
+    }, {
+        "name": "brooklyn-nine-nine",
+        "url": "http://vmus.co/神煩警察神煩警探-brooklyn-nine-nine/",
+    }, {
+        "name": "suits",
+        "url": "http://vmus.co/金裝律師訴訟雙雄-suits/",
+    }, {
+        "name": "new-girl",
+        "url": "http://vmus.co/俏妞報到杰茜駕到-new-girl/",
+    }, {
+        "name": "quantico",
+        "url": "http://vmus.co/quantico/",
+    }, {
+        "name": "bigbang",
+        "url": "http://vmus.co/宅男行不行生活大爆炸-the-big-bang-theory/",
+    }, {
+        "name": "fresh-off-the-boat",
+        "url": "http://vmus.co/fresh-off-the-boat/",
+    }, {
+        "name": "billions",
+        "url": "http://vmus.co/billions/",
+    }, {
+        "name": "rush-hour",
+        "url": "http://vmus.co/rush-hour/",
+    }, {
+        "name": "dr-ken",
+        "url": "http://vmus.co/dr-ken/",
+    }, {
+        "name": "silicon-valley",
+        "url": "http://vmus.co/矽谷群瞎傳硅谷矽谷黑歷史-silicon-valley/",
+    },
+]
+
+def dump_data():
+    with open('shows.json', 'w') as f:
+        json.dump(data, f)
 
 def get_data():
-    with open("shows.json") as f:
+    with open('shows.json', 'r') as f:
          data = json.load(f)
          return data
+    #
+    # with open('shows.json', 'r') as f:
+    #     data = json.loads(f.read())
+    #     return data
 
 def get_desktop_path():
     desktop = os.path.join(os.environ["HOMEDRIVE"], os.environ["HOMEPATH"], "Desktop")
@@ -109,3 +117,4 @@ def update_show_html():
 
 if __name__ == "__main__":
     update_show_html()
+    # dump_data()
