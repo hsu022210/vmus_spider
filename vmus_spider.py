@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import os
 import json
 
-data = [
+raw_data = [
     {
         "name": "scorpion",
         "url": "http://vmus.co/天蠍蠍子網絡-scorpion/",
@@ -40,7 +40,7 @@ data = [
     },
 ]
 
-def dump_data():
+def dump_data(data):
     with open('shows.json', 'w') as f:
         json.dump(data, f, indent=4, separators=(',', ': '))
 
@@ -117,4 +117,4 @@ def update_show_html():
 
 if __name__ == "__main__":
     update_show_html()
-    # dump_data()
+    # dump_data(raw_data)
