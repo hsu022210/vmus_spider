@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import json
+import template
 
 raw_data = [
     {
@@ -76,7 +77,8 @@ def shows_latest_episode(url):
     episode_image = latest_episode_soup.find('img', {'class': 'attachment-featured_image'})['src']
     print('--------------------------------------------------------')
     print(post_time_text)
-    print(episode_name)
+    print(episode_name.encode('utf-8'))
+    print(latest_episode_url)
     return(post_time_text, latest_episode_url, episode_name, episode_image, episodes_url)
 
 
@@ -85,33 +87,8 @@ def update_show_html():
     text_file = open(file_place, "w+")
     text_file.close()
 
-    html_template = '<!DOCTYPE html><html lang="en"><head>' + \
-        '<meta charset="utf-8">' + \
-        '<meta name="viewport" content="width=device-width,' + \
-        ' initial-scale=1, shrink-to-fit=no">' + \
-        '<meta http-equiv="x-ua-compatible" content="ie=edge">' + \
-        '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/' + \
-        'bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"' + \
-        ' integrity="sha384-y3tfxAZXuh4HwSYylfB' + \
-        '+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"' + \
-        ' crossorigin="anonymous"></head><body><div class="list-group">'
-
-    data = get_data()
-
-    for show in data:
-        (post_time_text, latest_episode_url, episode_name, episode_image, episodes_url) = shows_latest_episode(show['url'])
-        show_list = '<a href="{}" class="list-group-item list-group-item-info text-center"><img src="http:{}" width="300" height="100"/> {} | {} | <a href="{}">{}</a> </a>'.format(latest_episode_url, episode_image, post_time_text, episode_name, episodes_url, show['name'])
-        html_template += show_list
-
-    html_template += '<!-- jQuery first, then Bootstrap JS. -->' + \
-        '<script src="https://ajax.googleapis.com/' + \
-        'ajax/libs/jquery/2.1.4/jquery.min.js"></script>' + \
-        '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/' + \
-        '4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMws' + \
-        'jRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"' + \
-        ' crossorigin="anonymous"></script></body></html>'
-    text_file = open(file_place, "a")
-    text_file.write(html_template)
+    text_file = open(file_place, "a", encoding='utf-8')
+    text_file.write(template.get_template())
     text_file.close()
 
 
