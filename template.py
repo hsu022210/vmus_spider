@@ -11,7 +11,8 @@ def get_template():
         'bootstrap/3.3.7/css/bootstrap.min.css"' + \
         ' integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"' + \
         ' crossorigin="anonymous"><title>Shows real time updated</title> '+ \
-        '</head><body style="padding: 50px; background:#26547c;"><div class="row">'
+        '</head><body style="padding: 50px; background:#2b303a;"><div class="row">'
+    # background:#26547c
 
     data = vmus_spider.get_data()
 

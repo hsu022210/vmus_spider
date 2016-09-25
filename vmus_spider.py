@@ -78,7 +78,7 @@ def shows_latest_episode(url):
     print('--------------------------------------------------------')
     print(post_time_text)
     print(episode_name.encode('utf-8'))
-    print(latest_episode_url)
+    # print(latest_episode_url)
     return(post_time_text, latest_episode_url, episode_name, episode_image, episodes_url)
 
 
