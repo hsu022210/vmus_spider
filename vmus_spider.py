@@ -55,7 +55,12 @@ def get_data():
     #     return data
 
 def get_desktop_path():
-    desktop = os.path.join(os.environ["HOMEDRIVE"], os.environ["HOMEPATH"], "Desktop")
+
+    # Windows desktop path
+    # desktop = os.path.join(os.environ["HOMEDRIVE"], os.environ["HOMEPATH"], "Desktop")
+
+    # Mac desktop path
+    desktop = os.path.join(os.path.expanduser('~'), 'Desktop')
     return desktop
 
 
