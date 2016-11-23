@@ -17,7 +17,7 @@ def get_template():
     data = vmus_spider.get_data()
 
     each_show_thumbnail = '<div class="col-sm-6 col-md-4">' +\
-        '<div class="thumbnail" style="min-height:300px;"><img src="http:{}">' + \
+        '<div class="thumbnail" style="min-height:300px;"><img src="{}">' + \
             '<div class="caption">' + \
                 '<h3>{}</h3>' + \
                 '<p>{}</p>' + \
