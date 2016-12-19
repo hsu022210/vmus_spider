@@ -38,12 +38,34 @@ raw_data = [
     }, {
         "name": "silicon-valley",
         "url": "http://vmus.co/矽谷群瞎傳硅谷矽谷黑歷史-silicon-valley/",
-    },
+    }, {
+        "name": "berlin-station",
+        "url": "http://vmus.co/berlin-station/",
+    }, {
+        "name": "west-world",
+        "url": "http://vmus.co/westworld/",
+    }, {
+        "name": "pure-genius",
+        "url": "http://vmus.co/pure-genius/",
+    }, {
+        "name": "chance",
+        "url": "http://vmus.co/chance/",
+    }, {
+        "name": "entourage",
+        "url": "http://vmus.co/entourage/",
+    }, {
+        "name": "white-collar",
+        "url": "http://vmus.co/雅痞神探貓鼠遊戲妙警賊探-white-collar/",
+    }, {
+        "name": "hawaii-five-0",
+        "url": "http://vmus.co/檀島警騎2-0天堂執法者-hawaii-five-0/",
+    }
 ]
 
 def dump_data(data):
     with open('shows.json', 'w') as f:
         json.dump(data, f, indent=4, separators=(',', ': '))
+    print('data imported')
 
 def get_data():
     with open('shows.json', 'r') as f:

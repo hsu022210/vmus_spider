@@ -42,5 +42,33 @@
     {
         "url": "http://vmus.co/\u77fd\u8c37\u7fa4\u778e\u50b3\u7845\u8c37\u77fd\u8c37\u9ed1\u6b77\u53f2-silicon-valley/",
         "name": "silicon-valley"
+    },
+    {
+        "url": "http://vmus.co/berlin-station/",
+        "name": "berlin-station"
+    },
+    {
+        "url": "http://vmus.co/westworld/",
+        "name": "west-world"
+    },
+    {
+        "url": "http://vmus.co/pure-genius/",
+        "name": "pure-genius"
+    },
+    {
+        "url": "http://vmus.co/chance/",
+        "name": "chance"
+    },
+    {
+        "url": "http://vmus.co/entourage/",
+        "name": "entourage"
+    },
+    {
+        "url": "http://vmus.co/\u96c5\u75de\u795e\u63a2\u8c93\u9f20\u904a\u6232\u5999\u8b66\u8cca\u63a2-white-collar/",
+        "name": "white-collar"
+    },
+    {
+        "url": "http://vmus.co/\u6a80\u5cf6\u8b66\u9a0e2-0\u5929\u5802\u57f7\u6cd5\u8005-hawaii-five-0/",
+        "name": "hawaii-five-0"
     }
 ]
