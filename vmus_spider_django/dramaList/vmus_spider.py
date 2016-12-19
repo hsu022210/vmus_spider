@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import json
-import template
+# import template
 
 raw_data = [
     {
@@ -63,12 +63,12 @@ raw_data = [
 ]
 
 def dump_data(data):
-    with open('shows.json', 'w') as f:
+    with open('static/json/shows.json', 'w') as f:
         json.dump(data, f, indent=4, separators=(',', ': '))
     print('data imported')
 
 def get_data():
-    with open('shows.json', 'r') as f:
+    with open('static/json/shows.json', 'r') as f:
          data = json.load(f)
          return data
     #
@@ -104,9 +104,17 @@ def shows_latest_episode(url):
     episode_image = latest_episode_soup.find('img', {'class': 'attachment-featured_image'})['src']
     print('--------------------------------------------------------')
     print(post_time_text)
-    print(episode_name.encode('utf-8'))
+    # print(episode_name.encode('utf-8'))
+
+    show_dict = {}
+    show_dict['episode_name'] = episode_name
+    show_dict['latest_episode_url'] = latest_episode_url
+    show_dict['episodes_url'] = episodes_url
+    show_dict['post_time_text'] = post_time_text
+    show_dict['episode_image'] = episode_image
     # print(latest_episode_url)
-    return(post_time_text, latest_episode_url, episode_name, episode_image, episodes_url)
+    return show_dict
+    # return(post_time_text, latest_episode_url, episode_name, episode_image, episodes_url)
 
 
 def update_show_html():
@@ -117,6 +125,17 @@ def update_show_html():
     text_file = open(file_place, "a", encoding='utf-8')
     text_file.write(template.get_template())
     text_file.close()
+
+def get_shows_info_arr():
+    data = get_data()
+    arr = []
+
+    for show in data:
+        show_dict = shows_latest_episode(show['url'])
+        print(show['name'])
+        show_dict['name'] = show['name']
+        arr.append(show_dict)
+    return arr
 
 
 if __name__ == "__main__":

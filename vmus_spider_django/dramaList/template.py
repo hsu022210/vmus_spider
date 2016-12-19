@@ -1,4 +1,4 @@
-import vmus_spider
+# import vmus_spider
 
 def get_template():
 
