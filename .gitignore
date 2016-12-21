@@ -1,3 +1,4 @@
 *.pyc
 *.sqlite3
 vmus_spider_venv/
+.idea/
