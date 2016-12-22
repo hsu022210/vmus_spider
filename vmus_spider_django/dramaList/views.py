@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 def index(request):
-    for show in Show.objects.order_by('show_name'):
+    for show in Show.objects.all():
 
         (show_soup, latest_episode_url) = vmus_spider.get_latest_episode_url(show.show_url)
 
@@ -22,7 +22,7 @@ def index(request):
 
     # shows_info_arr = vmus_spider.get_shows_info_arr()
 
-    shows_info_arr = Show.objects.all()
+    shows_info_arr = Show.objects.order_by('-latest_post_time')
     current_time = datetime.now()
     # current_time = timezone.now()
     context = {'shows_info_arr': shows_info_arr,
