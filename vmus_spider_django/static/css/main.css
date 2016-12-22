@@ -27,3 +27,7 @@ body {
 .text-white {
     color: #ffffff;
 }
+
+.margin-auto{
+    margin: 0 auto;
+}

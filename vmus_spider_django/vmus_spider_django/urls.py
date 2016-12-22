@@ -19,6 +19,6 @@ import dramaList.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', dramaList.views.start_loading, name='start_loading'),
-    url(r'^home/', dramaList.views.index, name='home'),
+    url(r'^$', dramaList.views.index, name='home'),
+    url(r'^loading/', dramaList.views.start_loading, name='start_loading'),
 ]
