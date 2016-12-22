@@ -96,6 +96,7 @@ def BsRequest(url):
 def get_latest_episode_url(url):
     show_soup = BsRequest(url)
     latest_episode_url = show_soup.find('span', {'class': 'category_nav_prev'}).a['href']
+    print(url)
     return show_soup, latest_episode_url
 
 

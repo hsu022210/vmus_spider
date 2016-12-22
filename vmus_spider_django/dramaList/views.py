@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . import vmus_spider
 from .models import Show
 from datetime import datetime
+from django.utils import timezone
 
 # Create your views here.
 
@@ -18,15 +19,12 @@ def index(request):
             show.latest_post_time = show_dict['latest_post_time']
             show.show_image = show_dict['show_image']
             show.save()
-            # show.update(latest_episode_name = show_dict.latest_episode_name,
-            #             latest_episode_url = show_dict.latest_episode_url,
-            #             latest_post_time = show_dict.latest_post_time,
-            #             show_image = show_dict.show_image)
 
     # shows_info_arr = vmus_spider.get_shows_info_arr()
 
     shows_info_arr = Show.objects.all()
-    current_time = datetime.now().time()
+    current_time = datetime.now()
+    # current_time = timezone.now()
     context = {'shows_info_arr': shows_info_arr,
                'current_time': current_time,
                }
