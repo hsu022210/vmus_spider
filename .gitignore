@@ -2,3 +2,5 @@
 *.sqlite3
 vmus_spider_venv/
 .idea/
+__pycache__
+settings.py
