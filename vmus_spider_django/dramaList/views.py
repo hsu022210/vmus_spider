@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 def index(request):
-    for show in Show.objects.all():
+    for show in Show.objects.order_by('show_name'):
 
         (show_soup, latest_episode_url) = vmus_spider.get_latest_episode_url(show.show_url)
 
