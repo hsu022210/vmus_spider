@@ -93,6 +93,33 @@ def BsRequest(url):
     return soup
 
 
+def get_latest_episode_url(url):
+    show_soup = BsRequest(url)
+    latest_episode_url = show_soup.find('span', {'class': 'category_nav_prev'}).a['href']
+    print(url)
+    return show_soup, latest_episode_url
+
+
+def get_latest_episode_info(show_soup, latest_episode_url):
+    # show_url = show_soup.find('meta', {'property': 'og:url'})['content']
+    latest_episode_soup = BsRequest(latest_episode_url)
+    latest_episode_name = latest_episode_soup.find('h2', {'class': 'post-title'}).text
+    latest_episode_name = latest_episode_name.split('線上看')[0]
+    latest_post_time = latest_episode_soup.find('time', {'class': 'entry-date'}).text
+    show_image = latest_episode_soup.find('img', {'class': 'attachment-featured_image'})['src']
+    print('--------------------------------------------------------')
+    print(latest_post_time)
+
+    show_dict = {}
+    show_dict['latest_episode_name'] = latest_episode_name
+    show_dict['latest_episode_url'] = latest_episode_url
+    # show_dict['show_url'] = show_url
+    show_dict['latest_post_time'] = latest_post_time
+    show_dict['show_image'] = show_image
+    return show_dict
+
+
+
 def shows_latest_episode(url):
     episodes_soup = BsRequest(url)
     latest_episode_url = episodes_soup.find('span', {'class': 'category_nav_prev'}).a['href']
@@ -127,7 +154,8 @@ def update_show_html():
     text_file.close()
 
 def get_shows_info_arr():
-    data = get_data()
+    # data = get_data()
+    data = raw_data
     arr = []
 
     for show in data:
