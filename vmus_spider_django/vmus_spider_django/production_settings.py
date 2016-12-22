@@ -25,7 +25,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Turn off DEBUG mode
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = False
 
