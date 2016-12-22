@@ -1,0 +1,1 @@
+web: gunicorn vmus_spider_django.wsgi
