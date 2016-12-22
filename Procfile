@@ -1,1 +1,1 @@
-web: gunicorn vmus_spider_django.wsgi
+web: gunicorn --pythonpath vmus_spider_django vmus_spider_django.wsgi
