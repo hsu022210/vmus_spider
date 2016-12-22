@@ -28,3 +28,5 @@ ALLOWED_HOSTS = ['*']
 DEBUG = False
 
 TEMPLATE_DEBUG = False
+
+ADMINS = (('Alec Hsu', 'hsu022210@gmail.com'),)
