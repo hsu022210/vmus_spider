@@ -7,16 +7,16 @@ DATABASES = {
 }
 
 # Static asset configuration
-STATIC_ROOT = 'staticfiles'
+# STATIC_ROOT = 'staticfiles'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-# STATIC_URL = '/static/'
-#
-# STATIC_ROOT = join(BASE_DIR, 'assets')
-#
-# STATICFILES_DIRS = [join(BASE_DIR, 'static')]
+STATIC_URL = '/static/'
+
+STATIC_ROOT = join(BASE_DIR, 'assets')
+
+STATICFILES_DIRS = [join(BASE_DIR, 'static')]
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
