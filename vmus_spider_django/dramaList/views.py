@@ -20,11 +20,13 @@ def index(request):
             show.show_image = show_dict['show_image']
 
         refreshed_time = timezone.now()
-        taiwan_tz = pytz.timezone('Asia/Taipei')
-        refreshed_time_taiwan = refreshed_time.astimezone(taiwan_tz)
+        print(refreshed_time)
+        # taiwan_tz = pytz.timezone('Asia/Taipei')
+        # refreshed_time_taiwan = refreshed_time.astimezone(taiwan_tz)
+        # print(refreshed_time_taiwan)
 
-        # show.refreshed_time = refreshed_time
-        show.refreshed_time = refreshed_time_taiwan
+        show.refreshed_time = refreshed_time
+        # show.refreshed_time = refreshed_time_taiwan
         show.save()
 
     showName = request.GET.get('showName')
