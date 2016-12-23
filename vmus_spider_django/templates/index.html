@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{% url 'home' %}">
                     TV Updater
                 </a>
             </div>
@@ -64,13 +64,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">
+                                <a href="{% url 'home' %}">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Shows
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="{% url 'home' %}">
                                     <span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Reviews API
                                 </a>
                             </li>
@@ -78,7 +78,7 @@
                             <li role="separator" class="divider"></li>
 
                             <li>
-                                <a href="#">
+                                <a href="{% url 'home' %}">
                                     Log out <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                                 </a>
                             </li>
@@ -100,8 +100,7 @@
             <!--</div>-->
 
             <div class="col-sm-2 col-sm-offset-10">
-                <br>
-                <a href="/loading?showName=all" class="btn btn-primary" role="button">
+                <a href="/loading?showName=all" class="btn btn-danger" role="button">
                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh all
                 </a>
             </div>
@@ -116,21 +115,39 @@
                     <div class="thumbnail thumbnail-height">
                         <img src="{{ show.show_image }}">
                         <div class="caption">
-                            <h3>{{ show.show_name }}</h3>
-                            <p>{{ show.latest_episode_name }}</p>
-                                <br>
+
+                            <div class="panel panel-default">
+                              <div class="panel-heading">
+                                {% load tz %}
+                                Refreshed at <strong>{{ show.refreshed_time|timezone:"Asia/Taipei" |date:"Y-m-d h:i A" }}</strong>
+                                &nbsp
+                                &nbsp
+                                <a href="/loading?showName={{ show.show_name }}" class="btn btn-danger" role="button">
+                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+                                </a>
+                              </div>
+                            </div>
+
+                            <h3 class="text-center">{{ show.show_name }}</h3>
+                            <p class="text-center">{{ show.latest_episode_name }}</p>
+                            <br>
+
+                            <!--<div class="alert alert-danger" role="alert">-->
+                                <!--{% load tz %}-->
+                                <!--Refreshed at <strong>{{ show.refreshed_time|timezone:"Asia/Taipei" |date:"Y-m-d h:i A" }}</strong>-->
+                                <!--&nbsp-->
+                                <!--&nbsp-->
+                                <!--<a href="/loading?showName={{ show.show_name }}" class="btn btn-danger" role="button">-->
+                                    <!--<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh-->
+                                <!--</a>-->
+                            <!--</div>-->
+
                             <p>
                                 <a href="{{ show.show_url }}" class="btn btn-default" role="button">
-                                    series
+                                    Series
                                 </a>
-                                <a href="{{ show.latest_episode_url }}" class="btn btn-danger pull-right" role="button">
-                                    {{ show.latest_post_time }}
-                                </a>
-                            </p>
-
-                            <p class="text-right">
-                                <a href="/loading?showName={{ show.show_name }}" class="btn btn-primary" role="button">
-                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refreshed at {{ current_time }}
+                                <a href="{{ show.latest_episode_url }}" class="btn btn-primary pull-right" role="button">
+                                    {{ show.latest_post_time }} <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
                                 </a>
                             </p>
 
@@ -148,7 +165,7 @@
 
         <div class="footer">
             <p class="text-center text-white">
-				Copyright &copy; 2016 TV Updater by Alec
+				<!--Copyright &copy; 2016 TV Updater by Alec-->
 			</p>
         </div>
     </div>

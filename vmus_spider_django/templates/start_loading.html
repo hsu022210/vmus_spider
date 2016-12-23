@@ -25,7 +25,15 @@
         <!--<div class="loading" data-directTo="{% url 'home' %}">-->
         <div class="loading" data-directTo="/?showName={{showName}}">
             <div class="loader"></div>
-            <h3>{{ showName }} loading ...</h3>
+            <h2 class="text-primary">
+                {% if showName == 'all' %}
+                <strong>All shows</strong>
+                {% else %}
+                <strong>{{ showName }}</strong>
+                {% endif %}
+            </h2>
+            <br>
+            <h3>loading ...</h3>
         </div>
         <!--<br>-->
         <!--<br>-->
