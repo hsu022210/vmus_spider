@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from . import vmus_spider
 from .models import Show
 from django.utils import timezone
@@ -38,6 +38,7 @@ def index(request):
         else:
             show = Show.objects.get(show_name=showName)
             parse_show(show)
+        return redirect('home')
 
     shows_info_arr = Show.objects.order_by('-latest_post_time')
 
