@@ -20,7 +20,7 @@ def index(request):
             show.show_image = show_dict['show_image']
 
         refreshed_time = timezone.now()
-        print(refreshed_time)
+        # print(refreshed_time)
         # taiwan_tz = pytz.timezone('Asia/Taipei')
         # refreshed_time_taiwan = refreshed_time.astimezone(taiwan_tz)
         # print(refreshed_time_taiwan)
