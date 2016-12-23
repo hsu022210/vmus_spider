@@ -119,8 +119,9 @@
                             <div class="panel panel-default">
                               <div class="panel-heading">
 
-                                  {% load tz %}
-                                  Refreshed at <strong>{{ show.refreshed_time|timezone:"Asia/Taipei" |date:"Y-m-d h:i A" }}</strong>
+                                  Refreshed at <strong>{{ show.refreshed_time |date:"Y-m-d h:i A" }}</strong>
+                                  <!--{% load tz %}-->
+                                  <!--Refreshed at <strong>{{ show.refreshed_time|timezone:"Asia/Taipei" |date:"Y-m-d h:i A" }}</strong>-->
 
                                   &nbsp
 
