@@ -19,7 +19,7 @@ def index(request):
             show.latest_post_time = show_dict['latest_post_time']
             show.show_image = show_dict['show_image']
 
-        # refreshed_time = timezone.now()
+        refreshed_time = timezone.now()
         taiwan_tz = pytz.timezone('Asia/Taipei')
         refreshed_time_taiwan = refreshed_time.astimezone(taiwan_tz)
 
