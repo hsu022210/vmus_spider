@@ -3,6 +3,7 @@ from . import vmus_spider
 from .models import Show
 from django.utils import timezone
 import pytz
+import requests
 
 # Create your views here.
 
@@ -42,8 +43,13 @@ def index(request):
 
     shows_info_arr = Show.objects.order_by('-latest_post_time')
 
+    freegeoip_response = requests.get('http://freegeoip.net/json')
+    freegeoip_response_json = freegeoip_response.json()
+    user_time_zone = freegeoip_response_json['time_zone']
+
     context = {
         'shows_info_arr': shows_info_arr,
+        'user_time_zone': user_time_zone,
                }
     return render(request, 'index.html', context)
 
