@@ -47,6 +47,9 @@ def index(request):
     freegeoip_response_json = freegeoip_response.json()
     user_time_zone = freegeoip_response_json['time_zone']
 
+    if user_time_zone == "America/Los_Angeles":
+        user_time_zone = "US/Pacific"
+
     context = {
         'shows_info_arr': shows_info_arr,
         'user_time_zone': user_time_zone,
