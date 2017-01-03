@@ -30,7 +30,20 @@ def index(request):
         # show.refreshed_time = refreshed_time_taiwan
         show.save()
 
+    def get_ip(request):
+        """Returns the IP of the request, accounting for the possibility of being
+        behind a proxy.
+        """
+        ip = request.META.get("HTTP_X_FORWARDED_FOR", None)
+        if ip:
+            # X_FORWARDED_FOR returns client1, proxy1, proxy2,...
+            ip = ip.split(", ")[0]
+        else:
+            ip = request.META.get("REMOTE_ADDR", "")
+        return ip
+
     showName = request.GET.get('showName')
+    # ip = get_ip(request)
 
     if showName:
         if showName == 'all':
@@ -43,13 +56,16 @@ def index(request):
 
     shows_info_arr = Show.objects.order_by('-latest_post_time')
 
-    freegeoip_response = requests.get('http://freegeoip.net/json')
-    freegeoip_response_json = freegeoip_response.json()
-    user_time_zone = freegeoip_response_json['time_zone']
+    # freegeoip_response = requests.get('http://freegeoip.net/json/' + ip)
+    # freegeoip_response_json = freegeoip_response.json()
+    # user_time_zone = freegeoip_response_json['time_zone']
+    # print(ip)
+    # print(user_time_zone)
+
 
     context = {
         'shows_info_arr': shows_info_arr,
-        'user_time_zone': user_time_zone,
+        # 'user_time_zone': user_time_zone,
                }
     return render(request, 'index.html', context)
 
